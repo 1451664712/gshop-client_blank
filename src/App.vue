@@ -1,18 +1,26 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view/>
     <FooterGuide v-if="$route.meta.showFooter"/>
   </div>
 </template>
 
 <script>
-import FooterGuide from './components/FooterGuide/FooterGuide'
-export default {
-  name: 'App',
-  components: {
-    FooterGuide
+  import FooterGuide from './components/FooterGuide/FooterGuide'
+  import {mapActions} from 'vuex'
+
+  export default {
+    name: 'App',
+    components: {
+      FooterGuide
+    },
+    methods: {
+      ...mapActions(['getAddress'])
+    },
+    mounted () {
+      this.getAddress()
+    }
   }
-}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>

@@ -21,6 +21,29 @@
   </script>
 </head>
 <body>
-<div id="app"></div>
+<div id="app">
+  <button class="section section_cur">sdf</button>
+  <button class="section">222</button>
+  <button class="section">333</button>
+  <button class="section">444</button>
+  <button class="section">555</button>
+  <button class="section">666</button>
+  <button class="section">777</button>
+
+</div>
 </body>
 </html>
+
+
+<script>
+const oSecton = document.getElementsByClassName('section')
+console.log(oSecton)
+let arr = [].slice.call(oSecton)
+arr.map((item,index) => {
+  item.onclick = function () {
+    if (item.className === 'section section_cur') {
+      this.style.backgroundColor = 'red'
+    }
+  }
+})
+</script>
