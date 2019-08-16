@@ -7,7 +7,7 @@
   <title>跑腿</title>
   <link rel="stylesheet" href="./static/css/reset.css">
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_518606_6676bmcalnrhehfr.css">
-  <link rel="shortcut icon" href="http://www.faviconico.org/ico-converted/20190813/favicon-20190813042411873.ico">
+  <link rel="shortcut icon" href="http://www.faviconico.org/ico-converted/20190814/favicon-20190814065142207.ico">
   <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
   <script>
     if ('addEventListener' in document) {
@@ -21,29 +21,43 @@
   </script>
 </head>
 <body>
-<div id="app">
-  <button class="section section_cur">sdf</button>
-  <button class="section">222</button>
-  <button class="section">333</button>
-  <button class="section">444</button>
-  <button class="section">555</button>
-  <button class="section">666</button>
-  <button class="section">777</button>
-
-</div>
+<div id="app"></div>
 </body>
 </html>
 
 
-<script>
-const oSecton = document.getElementsByClassName('section')
-console.log(oSecton)
-let arr = [].slice.call(oSecton)
-arr.map((item,index) => {
-  item.onclick = function () {
-    if (item.className === 'section section_cur') {
-      this.style.backgroundColor = 'red'
-    }
-  }
-})
-</script>
+<!--<script>-->
+<!--// const oSecton = document.getElementsByClassName('section')-->
+<!--// console.log(oSecton)-->
+<!--// let arr = [].slice.call(oSecton)-->
+<!--// arr.map((item,index) => {-->
+<!--//   item.onclick = function () {-->
+<!--//     if (item.className === 'section section_cur') {-->
+<!--//       this.style.backgroundColor = 'red'-->
+<!--//     }-->
+<!--//   }-->
+<!--// })-->
+<!--// let oSection = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]-->
+<!--// let arr = []-->
+<!--// let minArr = []-->
+<!--// let minArr2 = []-->
+<!--// minArr = oSection.slice(0,8)-->
+<!--// minArr2 =oSection.slice(8, oSection.length)-->
+<!--// arr.push(minArr,minArr2)-->
+<!--// console.log(arr)-->
+
+<!--//   let oSection = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]-->
+<!--//   let arr = []-->
+<!--//   let minArr = []-->
+<!--//-->
+<!--//   oSection.forEach(item => {-->
+<!--//     if (minArr.length === 8) {-->
+<!--//       minArr = []-->
+<!--//     }-->
+<!--//     if (minArr.length === 0) {-->
+<!--//       arr.push(minArr)-->
+<!--//     }-->
+<!--//     minArr.push(item)-->
+<!--//   })-->
+<!--//   console.log(arr)-->
+<!--</script>-->

@@ -6,21 +6,21 @@
 </template>
 
 <script>
-  import FooterGuide from './components/FooterGuide/FooterGuide'
-  import {mapActions} from 'vuex'
+import FooterGuide from './components/FooterGuide/FooterGuide'
+import {mapActions} from 'vuex'
 
-  export default {
-    name: 'App',
-    components: {
-      FooterGuide
-    },
-    methods: {
-      ...mapActions(['getAddress'])
-    },
-    mounted () {
-      this.getAddress()
-    }
+export default {
+  name: 'App',
+  components: {
+    FooterGuide
+  },
+  methods: {
+    ...mapActions(['getAddress'])
+  },
+  mounted () {
+    this.getAddress()
   }
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>

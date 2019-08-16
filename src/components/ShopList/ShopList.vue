@@ -1,56 +1,74 @@
 <template>
   <section class="shop_container">
-    <ul class="shop_list">
-      <li class="shop_li border-1px">
+    <ul class="shop_list" v-if="shops.length">
+      <li class="shop_li border-1px" v-for="(shop, index) in shops" :key="index">
         <a>
           <div class="shop_left">
-            <img class="shop_img" src="./images/shop/1.jpg">
+            <img class="shop_img" :src="baseImageUrl + shop.image_path">
           </div>
           <div class="shop_right">
             <section class="shop_detail_header">
-              <h4 class="shop_title ellipsis">锄禾日当午，汗滴禾下土</h4>
+              <h4 class="shop_title ellipsis">{{shop.name}}</h4>
               <ul class="shop_detail_ul">
-                <li class="supports">保</li>
-                <li class="supports">准</li>
-                <li class="supports">票</li>
+                <li class="supports" v-for="(support, index) in shop.supports" :key="index">{{support.icon_name}}</li>
               </ul>
             </section>
             <section class="shop_rating_order">
               <section class="shop_rating_order_left">
-                <div class="star star-24">
-                  <span class="star-item on"></span>
-                  <span class="star-item on"></span>
-                  <span class="star-item on"></span>
-                  <span class="star-item half"></span>
-                  <span class="star-item off"></span>
-                </div>
+                <!--Start组件-->
+                <Start :score="shop.rating" :size="24"/>
                 <div class="rating_section">
-                  3.6
+                  {{shop.rating}}
                 </div>
                 <div class="order_section">
-                  月售106单
+                  月售{{shop.recent_order_num}}单
                 </div>
               </section>
               <section class="shop_rating_order_right">
-                <span class="delivery_style delivery_right">硅谷专送</span>
+                <span class="delivery_style delivery_right">{{shop.delivery_mode.text}}</span>
+                <span class="delivery_style delivery_right delivery_style_right">准时达</span>
               </section>
             </section>
             <section class="shop_distance">
               <p class="shop_delivery_msg">
                 <span>¥20起送</span>
                 <span class="segmentation">/</span>
-                <span>配送费约¥5</span>
+                <span>{{shop.piecewise_agent_fee.tips}}</span>
+              </p>
+              <p class="shop_distance_time">
+                <span>{{shop.distance}}</span>
+                <span>/</span>
+                <span class="order_time">{{shop.order_lead_time}}</span>
               </p>
             </section>
           </div>
         </a>
       </li>
     </ul>
+    <ul v-else>
+      <li v-for="(item,index) in 6" :key="index">
+        <img src="./images/shop_back.svg" alt="back">
+      </li>
+    </ul>
   </section>
 </template>
 
 <script>
-  export default {}
+import {mapState} from 'vuex'
+import Start from '../Start/Start'
+export default {
+  data () {
+    return {
+      baseImageUrl: 'http://cangdu.org:8001/img/'
+    }
+  },
+  computed: {
+    ...mapState(['shops'])
+  },
+  components: {
+    Start
+  }
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
@@ -192,8 +210,13 @@
                   background-color #02a774
                   border 1px solid #02a774
                 .delivery_right
-                  color #02a774
+                  margin-left -12px
+                  color #fff
+                  background #02a774
                   border 1px solid #02a774
+                .delivery_style_right
+                  background #fff
+                  color #02a774
             .shop_distance
               clearFix()
               width 100%
@@ -203,6 +226,14 @@
                 transform-origin 0
                 transform scale(.9)
                 color #666
+              .shop_distance_time
+                float right
+                transform-origin 0
+                transform scale(.9)
+                color #666
+                text-align right
+                .order_time
+                  color #3190e8
               .segmentation
                 color #ccc
 </style>

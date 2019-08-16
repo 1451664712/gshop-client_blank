@@ -9,12 +9,16 @@ import Login from '../views/Login/Login'
 Vue.use(VueRouter)
 export default new VueRouter({
   routes: [
-    // dynamic segments start with a colon
+    // dynamic segments Start with a colon
+    {
+      path: '/',
+      component: MSite,
+      meta: {showFooter: true}
+    },
     {
       path: '/msite',
       component: MSite,
-      meta:
-        {showFooter: true}
+      meta: {showFooter: true}
     },
     {
       path: '/search',
